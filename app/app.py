@@ -1,5 +1,6 @@
 import asyncio
 import datetime
+import pytz
 import time
 
 from config import TARGET_CHAT_ID, bot, stickers
@@ -12,7 +13,9 @@ async def send_sticker():
 
 
 def should_send_message(dt) -> bool:
-    today = datetime.datetime.today().date()
+    today = datetime.datetime.now(tz=pytz.timezone('Europe/Moscow')).date()
+    if not dt:
+        print(f'Today is {today}')
     if not dt or today > dt:
         return True
     return False
