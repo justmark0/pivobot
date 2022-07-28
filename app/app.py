@@ -7,7 +7,7 @@ from config import TARGET_CHAT_ID, bot, stickers
 
 
 async def send_sticker():
-    weekday = datetime.datetime.today().weekday() + 1
+    weekday = datetime.datetime.now(tz=pytz.timezone('Europe/Moscow')).weekday() + 1
     await bot.send_sticker(TARGET_CHAT_ID, sticker=stickers[weekday])
     now = datetime.datetime.now(tz=pytz.timezone('Europe/Moscow'))
     print(f'Sent {weekday} sticker at {now}')
