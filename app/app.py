@@ -27,6 +27,6 @@ if __name__ == "__main__":
     while True:
         if should_send_message(dt_last_sticker_send):
             asyncio.run(send_sticker())
-            dt_last_sticker_send = datetime.datetime.today().date()
+            dt_last_sticker_send = datetime.datetime.now(tz=pytz.timezone('Europe/Moscow')).date()
 
         time.sleep(10)
